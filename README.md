@@ -1,8 +1,8 @@
-# Budget Summary Tracker
+# 💰 Budget Summary Tracker
 
 A JavaScript practice project that analyzes expense data and compares spending against category budgets.
 
-## What this project does
+## ✨ What this project does
 
 This project uses an array of expense objects and a budget object to calculate:
 
@@ -12,7 +12,7 @@ This project uses an array of expense objects and a budget object to calculate:
 - budget status for each category
 - average spending per day
 
-## Inputs
+## 📥 Inputs
 
 - `expenses`: an array of objects with `amount`, `category`, `date`, and `description`
 - `budgets`: an object where each category has a spending limit
@@ -38,7 +38,7 @@ const budgets = {
 };
 ```
 
-## Outputs
+## 📊 Outputs
 
 The code calculates:
 
@@ -48,7 +48,7 @@ The code calculates:
 - `Budget comparison` for each category
 - `Average spending per day`
 
-## How to run
+## ▶️ How to run
 
 1. Open this folder in VS Code.
 2. Run the file with Node.js:
@@ -57,7 +57,7 @@ The code calculates:
 node budget_summary_tracker.js
 ```
 
-## Why this is useful
+## 🎯 Why this is useful
 
 This project improves JavaScript skills with:
 
@@ -67,7 +67,7 @@ This project improves JavaScript skills with:
 - comparing values to budget limits
 - working with dates in simple summaries
 
-## Next steps
+## 🚀 Next steps
 
 After this version, you can improve it by:
 
