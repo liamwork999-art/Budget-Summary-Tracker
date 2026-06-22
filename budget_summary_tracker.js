@@ -1,13 +1,15 @@
 /*
 Budget Summary Tracker
 
-This starter file uses an array of expense objects and a budget object.
-It includes functions to calculate:
-- total spending
-- spending per category
-- the largest expense
-- budget comparison by category
-- average spending per day
+This file contains the practice input data for the project.
+The functions are intentionally removed so you can write your own solution.
+
+Project goals:
+- calculate total spending
+- calculate spending per category
+- find the largest expense
+- compare spending to category budgets
+- calculate average spending per day
 */
 
 const expenses = [
@@ -34,64 +36,15 @@ const budgets = {
   transport: 60,
   entertainment: 50,
 };
+/*
 
-function totalSpending(expenseList) {
-  return expenseList.reduce((sum, item) => sum + item.amount, 0);
-}
+// TODO: write functions using this data
+// function totalSpending(expenseList) { ... }
+// function spendingByCategory(expenseList) { ... }
+// function largestExpense(expenseList) { ... }
+// function compareToBudgets(expenseList, budgetLimits) { ... }
+// function averageSpendingPerDay(expenseList) { ... }
 
-function spendingByCategory(expenseList) {
-  return expenseList.reduce((totals, item) => {
-    if (!totals[item.category]) {
-      totals[item.category] = 0;
-    }
-    totals[item.category] += item.amount;
-    return totals;
-  }, {});
-}
+// TODO: print the results in a readable format
 
-function largestExpense(expenseList) {
-  return expenseList.reduce((largest, item) => {
-    return !largest || item.amount > largest.amount ? item : largest;
-  }, null);
-}
-
-function compareToBudgets(expenseList, budgetLimits) {
-  const categoryTotals = spendingByCategory(expenseList);
-
-  return Object.keys(budgetLimits).map((category) => {
-    const spent = categoryTotals[category] || 0;
-    const limit = budgetLimits[category];
-    const status = spent > limit ? "over budget" : "within budget";
-
-    return {
-      category,
-      spent,
-      limit,
-      status,
-    };
-  });
-}
-
-function averageSpendingPerDay(expenseList) {
-  const totalsByDate = expenseList.reduce((totals, item) => {
-    totals[item.date] = (totals[item.date] || 0) + item.amount;
-    return totals;
-  }, {});
-
-  const days = Object.keys(totalsByDate).length;
-  const total = Object.values(totalsByDate).reduce(
-    (sum, amount) => sum + amount,
-    0,
-  );
-
-  return days === 0 ? 0 : total / days;
-}
-
-console.log("Budget Summary Tracker — Starter Output\n");
-console.log(`Total spending: ${totalSpending(expenses)}`);
-console.log("Spending by category:", spendingByCategory(expenses));
-console.log("Largest expense:", largestExpense(expenses));
-console.log("Budget comparison:", compareToBudgets(expenses, budgets));
-console.log(
-  `Average spending per day: ${averageSpendingPerDay(expenses).toFixed(2)}`,
-);
+*/
