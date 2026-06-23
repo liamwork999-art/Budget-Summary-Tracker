@@ -59,10 +59,12 @@ const budgets = {
 /*
 
 // TODO: write functions using this data
+
 // function totalSpending(expenseList) { ... }
 // function spendingByCategory(expenseList) { ... }
 // function largestExpense(expenseList) { ... }
 // function compareToBudgets(expenseList, budgetLimits) { ... }
+// function totalDays(expenseList) { ... }
 // function averageSpendingPerDay(expenseList) { ... }
 
 // TODO: print the results in a readable format
@@ -103,6 +105,8 @@ function largestExpense(expenseList) {
   return largestItem;
 }
 
+// Compare the spended with the budget limit
+
 function compareToBudgets(expenseList, budgetLimits) {
   const catagoryTotals = spendingByCategory(expenseList);
   const keys = Object.keys(budgetLimits);
@@ -121,11 +125,55 @@ function compareToBudgets(expenseList, budgetLimits) {
   return comparison;
 }
 
+// Finds the total days
+
+function totalDays(expenseList) {
+  const days = []; // This will have only the days EX: 22 or 12 or 1
+  let date = ''; // This is the whole date of one day EX: 2026-06-24
+  for (const eachExpense of expenseList) {
+    date = eachExpense.date;
+    days.push(Number(date.slice(-2)));
+  }
+  const totalDays = Math.max(...days) - Math.min(...days) + 1; // This will have the difference b/n the max and min from the days list to find how many days was taking
+
+  return totalDays;
+}
+
+//
+
+function averageSpendingPerDay(expenseList) {
+  const total = totalSpending(expenseList);
+  const days = totalDays(expenseList);
+  const avgSpendingPerDay = total / days;
+  return avgSpendingPerDay;
+}
+
 const totalSpendingValue = totalSpending(expenses);
 const spendingByCategoryValue = spendingByCategory(expenses);
 const largestExpenseValue = largestExpense(expenses);
 const compareToBudgetsValue = compareToBudgets(expenses, budgets);
+const totalDaysValue = totalDays(expenses);
+const averageSpendingPerDayValue = averageSpendingPerDay(expenses);
 
-// console.log(totalSpendingValue);
-// console.log(spendingByCategoryValue);
-// console.log(largestExpenseValue);
+// Printing a readable output
+
+console.log(`\nTotal spending: ${totalSpendingValue} \n`);
+// ----
+const categoryLines01 = Object.entries(spendingByCategoryValue)
+  .map(([category, amount]) => `- ${category}: ${amount}`)
+  .join('\n');
+console.log(`Spending by category: \n${categoryLines01}`);
+// ----
+const catagoryLines02 = Object.entries(largestExpenseValue)
+  .map(([catagory, amount]) => `- ${catagory}: ${amount}`)
+  .join('\n');
+console.log(`\nLargest expense: \n${catagoryLines02}`);
+// ----
+console.log(`\nBudget comparison:`);
+for (const item of compareToBudgetsValue) {
+  console.log(
+    `- ${item.catagory}: ${item.spent} / ${item.limit} → ${item.status}`,
+  );
+}
+// ----
+console.log(`\nAverage spending per day: ${averageSpendingPerDayValue}\n`);
