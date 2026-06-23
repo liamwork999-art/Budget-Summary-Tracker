@@ -103,10 +103,29 @@ function largestExpense(expenseList) {
   return largestItem;
 }
 
+function compareToBudgets(expenseList, budgetLimits) {
+  const catagoryTotals = spendingByCategory(expenseList);
+  const keys = Object.keys(budgetLimits);
+  const comparison = [];
+  for (const type of keys) {
+    comparison.push({
+      catagory: type,
+      spent: catagoryTotals[type],
+      limit: budgetLimits[type],
+      status:
+        catagoryTotals[type] > budgetLimits[type]
+          ? 'over budget'
+          : 'within budget',
+    });
+  }
+  return comparison;
+}
+
 const totalSpendingValue = totalSpending(expenses);
 const spendingByCategoryValue = spendingByCategory(expenses);
 const largestExpenseValue = largestExpense(expenses);
+const compareToBudgetsValue = compareToBudgets(expenses, budgets);
 
-console.log(totalSpendingValue);
-console.log(spendingByCategoryValue);
-console.log(largestExpenseValue);
+// console.log(totalSpendingValue);
+// console.log(spendingByCategoryValue);
+// console.log(largestExpenseValue);
